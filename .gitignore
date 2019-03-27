@@ -1,0 +1,9 @@
+Assembly-CSharp.csproj
+Library/
+Logs/
+ML1/ML1.sln
+obj/
+Packages/
+Temp/
+.vs/
+.DS_Store
