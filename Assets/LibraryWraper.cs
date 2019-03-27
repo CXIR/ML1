@@ -15,4 +15,7 @@ public static class LibraryWraper
 
     [DllImport("libtest")]
     public static extern int Predict(IntPtr w, double[] inputs, int valuesUsedByModel);
+
+    [DllImport("libtest")]
+    public static extern double LinearRegression(double[] xValues, double[] yValues, int numberOfParam, int numberOfObject);
 }
