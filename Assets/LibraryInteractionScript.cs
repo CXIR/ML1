@@ -25,12 +25,13 @@ public class LibraryInteractionScript : MonoBehaviour
             outputs.Add(sphere.position.y);
         }
 
-       _w = LibraryWraper.Initialize(2);
+       //_w = LibraryWraper.Initialize(2);
 
         double[] i = inputs.ToArray();
         double[] o = inputs.ToArray();
 
-        LibraryWraper.Train(_w, i, 2, _red.Length, o, 0.001, 100);
+        //LibraryWraper.Train(_w, i, 2, _red.Length, o, 0.001, 100);
+		w = LibraryWraper.linearRegression(inputs.ToArray(), outputs.ToArray(), 2, red.Length);
     }
 
     // Update is called once per frame
@@ -44,10 +45,12 @@ public class LibraryInteractionScript : MonoBehaviour
                 sphere.position.z
             };
             int predict = LibraryWraper.Predict(_w, localPositions.ToArray(), 2);
+			float predict = (float) LibraryWraper.PredictLinear(w, localPosition.ToArray(), 2);
 
             Vector3 item = new Vector3(sphere.position.x, sphere.position.y, sphere.position.z)
             {
-                y = (predict == -1) ? -1 : 1
+                //y = (predict == -1) ? -1 : 1
+                y = predict
             };
 
             sphere.position = item;
