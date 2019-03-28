@@ -9,6 +9,7 @@ public class LibraryInteractionScript : MonoBehaviour
     public Transform[] _red;
 
     public IntPtr _w;
+    public double w;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class LibraryInteractionScript : MonoBehaviour
         double[] o = inputs.ToArray();
 
         //LibraryWraper.Train(_w, i, 2, _red.Length, o, 0.001, 100);
-		w = LibraryWraper.linearRegression(inputs.ToArray(), outputs.ToArray(), 2, red.Length);
+        w = LibraryWraper.LinearRegression(inputs.ToArray(), outputs.ToArray(), 2, _red.Length);
     }
 
     // Update is called once per frame
@@ -44,8 +45,8 @@ public class LibraryInteractionScript : MonoBehaviour
                 sphere.position.x,
                 sphere.position.z
             };
-            int predict = LibraryWraper.Predict(_w, localPositions.ToArray(), 2);
-			float predict = (float) LibraryWraper.PredictLinear(w, localPosition.ToArray(), 2);
+            //int predict = LibraryWraper.Predict(_w, localPositions.ToArray(), 2);
+			float predict = (float) LibraryWraper.PredictLinear(_w, localPositions.ToArray(), 2);
 
             Vector3 item = new Vector3(sphere.position.x, sphere.position.y, sphere.position.z)
             {
