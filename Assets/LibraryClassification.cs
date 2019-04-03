@@ -29,7 +29,7 @@ public class LibraryClassification : MonoBehaviour
         double[] i = inputs.ToArray();
         double[] o = inputs.ToArray();
 
-        LibraryWraper.Train(_w, i, 2, _red.Length, o, 0.001, 1000);
+        LibraryWraper.Train(_w, i, 2, _red.Length, o, 0.001, 10000);
 
         foreach (Transform sphere in _plan)
         {
